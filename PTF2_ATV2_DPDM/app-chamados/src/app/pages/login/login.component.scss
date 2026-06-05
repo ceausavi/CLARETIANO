@@ -1,0 +1,104 @@
+/* ===================================================
+   Login Component Styles
+   =================================================== */
+
+.custom-bg {
+  --background: var(--ion-background-color);
+}
+
+/* Centraliza o card de login na tela */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px 28px;
+
+  /* Cabeçalho: ícone + título */
+  .login-header {
+    text-align: center;
+    margin-bottom: 36px;
+
+    .login-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--ion-color-primary);
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px auto;
+      box-shadow: 0 8px 20px rgba(var(--ion-color-primary-rgb), 0.35);
+
+      ion-icon {
+        font-size: 40px;
+        color: white;
+      }
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ion-text-color);
+      margin: 0 0 8px 0;
+    }
+
+    p {
+      color: var(--ion-color-medium);
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  /* Agrupamento de campo + mensagem de erro */
+  .field-group {
+    margin-bottom: 8px;
+  }
+
+  /* Item de input com borda padrão e estado inválido */
+  .custom-input {
+    --background: #f8fafc;
+    border-radius: 12px;
+    border: 1.5px solid #e2e8f0;
+    transition: border-color 0.2s;
+
+    &.invalid {
+      border-color: var(--ion-color-danger);
+      --background: #fff5f5;
+    }
+
+    ion-icon[slot="start"] {
+      margin-right: 8px;
+    }
+  }
+
+  /* Mensagem de erro abaixo do campo */
+  .error-msg {
+    color: var(--ion-color-danger);
+    font-size: 12px;
+    margin: 6px 0 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    ion-icon {
+      font-size: 14px;
+    }
+  }
+
+  /* Botão de login com sombra colorida */
+  .login-button {
+    margin-top: 28px;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 14px rgba(var(--ion-color-primary-rgb), 0.4);
+    height: 52px;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+}

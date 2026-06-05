@@ -1,0 +1,97 @@
+/* ===================================================
+   Sobre o Aplicativo - Styles
+   =================================================== */
+
+.custom-bg {
+  --background: var(--ion-background-color);
+}
+
+/* Container do logo centralizado */
+.logo-container {
+  text-align: center;
+  margin: 32px 0 24px 0;
+
+  .logo-box {
+    width: 86px;
+    height: 86px;
+    background: var(--ion-color-dark);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    ion-icon {
+      font-size: 46px;
+      color: white;
+    }
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ion-text-color);
+    margin: 0 0 6px 0;
+  }
+
+  p {
+    font-size: 14px;
+    color: var(--ion-color-medium);
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+/* Card principal contendo a lista de informações */
+.info-card {
+  padding: 16px 20px;
+
+  /* Cada item da lista */
+  .info-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #f1f5f9;
+
+    &.border-none {
+      border-bottom: none;
+    }
+
+    /* Ícone ao lado esquerdo */
+    ion-icon {
+      font-size: 26px;
+      color: var(--ion-color-primary);
+      margin-right: 16px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* Bloco de texto: label + valor */
+    .text-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-size: 11px;
+        color: var(--ion-color-medium);
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        font-weight: 600;
+      }
+
+      span {
+        font-size: 15px;
+        color: var(--ion-text-color);
+        font-weight: 500;
+
+        /* Texto com quebra de linha longa (Objetivo) */
+        &.multiline {
+          line-height: 1.5;
+          margin-top: 2px;
+        }
+      }
+    }
+  }
+}

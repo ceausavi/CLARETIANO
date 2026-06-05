@@ -1,0 +1,80 @@
+<!-- Tela de Lista de Técnicos: exibe e gerencia a equipe técnica -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Equipe Técnica</ion-title>
+    <ion-buttons slot="end">
+      <!-- Botão para ir direto ao cadastro de novo técnico -->
+      <ion-button routerLink="/tecnicos/novo" title="Novo técnico">
+        <ion-icon slot="icon-only" name="person-add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+
+  <!-- Estado vazio: nenhum técnico cadastrado -->
+  <div *ngIf="tecnicos.length === 0" class="empty-state">
+    <ion-icon name="people-circle-outline" color="medium"></ion-icon>
+    <h3>Nenhum técnico cadastrado</h3>
+    <p>Adicione técnicos para atribuir chamados.</p>
+    <ion-button routerLink="/tecnicos/novo" color="tertiary" class="empty-btn">
+      <ion-icon name="person-add-outline" slot="start"></ion-icon>
+      Cadastrar Técnico
+    </ion-button>
+  </div>
+
+  <!-- Lista de técnicos (slide para excluir) -->
+  <div *ngIf="tecnicos.length > 0">
+    <!-- Contador de técnicos -->
+    <p class="list-count">{{ tecnicos.length }} técnico(s) cadastrado(s)</p>
+
+    <ion-list class="premium-list">
+      <ion-item-sliding *ngFor="let tecnico of tecnicos" class="slide-item">
+
+        <ion-item lines="none" class="tecnico-item premium-card">
+          <!-- Avatar com inicial do nome -->
+          <div class="avatar-circle" slot="start">
+            <span>{{ getInicial(tecnico.nome) }}</span>
+          </div>
+
+          <ion-label>
+            <h2>{{ tecnico.nome }}</h2>
+            <p class="especialidade">
+              <ion-icon name="build-outline"></ion-icon>
+              {{ tecnico.especialidade }}
+            </p>
+            <p class="contato">
+              <ion-icon name="mail-outline"></ion-icon>
+              {{ tecnico.contato }}
+            </p>
+          </ion-label>
+
+          <!-- Badge de situação -->
+          <ion-badge slot="end" [color]="getCorSituacao(tecnico.situacao)">
+            {{ tecnico.situacao }}
+          </ion-badge>
+        </ion-item>
+
+        <!-- Opção de exclusão ao deslizar o item -->
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="confirmarExclusao(tecnico.id, tecnico.nome)">
+            <ion-icon slot="top" name="trash-outline"></ion-icon>
+            Excluir
+          </ion-item-option>
+        </ion-item-options>
+
+      </ion-item-sliding>
+    </ion-list>
+
+    <!-- Instrução de uso -->
+    <p class="swipe-hint">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      Deslize para a esquerda para excluir
+    </p>
+  </div>
+
+</ion-content>

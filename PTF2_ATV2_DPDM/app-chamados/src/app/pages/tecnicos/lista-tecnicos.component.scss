@@ -1,0 +1,148 @@
+/* ===================================================
+   Lista de Técnicos - Styles
+   =================================================== */
+
+.custom-bg {
+  --background: var(--ion-background-color);
+}
+
+/* Estado vazio: sem técnicos cadastrados */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px 40px;
+
+  ion-icon {
+    font-size: 72px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ion-text-color);
+    margin: 0 0 8px 0;
+  }
+
+  p {
+    color: var(--ion-color-medium);
+    font-size: 14px;
+    margin: 0 0 24px 0;
+  }
+
+  .empty-btn {
+    --border-radius: 12px;
+    height: 48px;
+    font-weight: 600;
+  }
+}
+
+/* Contador acima da lista */
+.list-count {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  margin: 0 0 12px 4px;
+  font-weight: 500;
+}
+
+/* Remove background padrão da ion-list */
+.premium-list {
+  background: transparent;
+  padding: 0;
+}
+
+/* Container do item deslizante */
+.slide-item {
+  margin-bottom: 12px;
+  border-radius: var(--app-radius);
+  overflow: hidden;
+}
+
+/* Card do técnico */
+.tecnico-item {
+  --background: var(--app-card-bg);
+  --border-radius: var(--app-radius);
+  --padding-start: 12px;
+  --inner-padding-end: 12px;
+  margin-bottom: 0;
+  border-radius: var(--app-radius);
+
+  /* Avatar circular com inicial do nome */
+  .avatar-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--ion-color-tertiary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-right: 4px;
+
+    span {
+      font-size: 20px;
+      font-weight: 700;
+      color: white;
+      line-height: 1;
+    }
+  }
+
+  ion-label {
+    h2 {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--ion-text-color);
+      margin-bottom: 4px;
+    }
+
+    /* Linha de especialidade */
+    p.especialidade {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--ion-color-medium);
+
+      ion-icon {
+        font-size: 13px;
+      }
+    }
+
+    /* Linha de contato */
+    p.contato {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      margin-top: 2px;
+
+      ion-icon {
+        font-size: 13px;
+      }
+    }
+  }
+
+  ion-badge {
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+}
+
+/* Dica de gesto de deslize */
+.swipe-hint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--ion-color-medium);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  ion-icon {
+    font-size: 14px;
+  }
+}

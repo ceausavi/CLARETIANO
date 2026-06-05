@@ -1,0 +1,89 @@
+/* ===================================================
+   Cadastro de Chamado - Styles
+   =================================================== */
+
+.custom-bg {
+  --background: var(--ion-background-color);
+}
+
+/* Container do formulário em coluna */
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card do formulário com padding interno */
+.form-card {
+  padding: 16px 0;
+
+  /* Agrupamento de campo + mensagem de erro */
+  .field-group {
+    margin-bottom: 4px;
+  }
+
+  /* Item de input base */
+  .custom-input {
+    --background: transparent;
+    margin-bottom: 2px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s;
+
+    /* Estado inválido: borda vermelha à esquerda */
+    &.invalid {
+      border-left-color: var(--ion-color-danger);
+    }
+
+    ion-icon[slot="start"] {
+      margin-right: 12px;
+      margin-top: 16px;
+    }
+  }
+
+  /* Mensagem de erro abaixo do campo */
+  .error-msg {
+    color: var(--ion-color-danger);
+    font-size: 12px;
+    margin: 4px 0 8px 16px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    ion-icon {
+      font-size: 14px;
+    }
+  }
+
+  /* Aviso quando não há técnicos cadastrados */
+  .no-tecnico-msg {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fffbeb;
+    border: 1px solid var(--ion-color-warning);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin: 8px 16px;
+
+    ion-icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    span {
+      font-size: 14px;
+      color: var(--ion-color-dark);
+      line-height: 1.4;
+    }
+  }
+}
+
+/* Botão de salvar com sombra colorida */
+.save-button {
+  margin-top: 24px;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 14px rgba(var(--ion-color-primary-rgb), 0.4);
+  height: 52px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}

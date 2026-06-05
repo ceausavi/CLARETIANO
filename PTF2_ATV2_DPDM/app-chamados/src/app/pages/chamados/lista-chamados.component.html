@@ -1,0 +1,82 @@
+<!-- Tela de Lista de Chamados: exibe todos os chamados registrados -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Chamados</ion-title>
+    <ion-buttons slot="end">
+      <!-- Botão para ir direto ao cadastro de novo chamado -->
+      <ion-button routerLink="/chamados/novo" title="Novo chamado">
+        <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+
+  <!-- Estado vazio: nenhum chamado registrado -->
+  <div *ngIf="chamados.length === 0" class="empty-state">
+    <ion-icon name="document-text-outline" color="medium"></ion-icon>
+    <h3>Nenhum chamado registrado</h3>
+    <p>Clique no botão + para abrir o primeiro chamado.</p>
+    <ion-button routerLink="/chamados/novo" color="primary" class="empty-btn">
+      <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+      Novo Chamado
+    </ion-button>
+  </div>
+
+  <!-- Lista de chamados -->
+  <div *ngIf="chamados.length > 0" class="cards-container">
+    <!-- Contador de chamados -->
+    <p class="list-count">{{ chamados.length }} chamado(s) registrado(s)</p>
+
+    <!-- Card de cada chamado -->
+    <div
+      *ngFor="let chamado of chamados"
+      class="premium-card chamado-card"
+      (click)="verDetalhes(chamado.id)"
+    >
+      <!-- Cabeçalho: ID e badge de prioridade -->
+      <div class="card-header">
+        <span class="chamado-id">#{{ chamado.id }}</span>
+        <ion-badge [color]="getCorPrioridade(chamado.prioridade)" class="badge-prioridade">
+          {{ chamado.prioridade }}
+        </ion-badge>
+      </div>
+
+      <!-- Título do chamado -->
+      <h2 class="titulo">{{ chamado.titulo }}</h2>
+
+      <!-- Solicitante -->
+      <div class="info-row">
+        <ion-icon name="person-outline" color="medium"></ion-icon>
+        <span>{{ chamado.solicitante }}</span>
+        <span class="setor" *ngIf="chamado.setor"> — {{ chamado.setor }}</span>
+      </div>
+
+      <!-- Técnico responsável -->
+      <div class="info-row" *ngIf="chamado.tecnico">
+        <ion-icon name="build-outline" color="medium"></ion-icon>
+        <span>{{ chamado.tecnico }}</span>
+      </div>
+
+      <!-- Data de abertura -->
+      <div class="info-row">
+        <ion-icon name="calendar-outline" color="medium"></ion-icon>
+        <span>{{ chamado.dataAbertura | date:'dd/MM/yyyy' }}</span>
+      </div>
+
+      <!-- Rodapé: badge de status -->
+      <div class="card-footer">
+        <ion-badge [color]="getCorStatus(chamado.status)" class="badge-status">
+          {{ chamado.status }}
+        </ion-badge>
+        <!-- Ícone de seta indicando que é clicável -->
+        <ion-icon name="chevron-forward-outline" color="medium" class="arrow-icon"></ion-icon>
+      </div>
+    </div>
+  </div>
+
+</ion-content>

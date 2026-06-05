@@ -1,0 +1,71 @@
+<!-- Tela de Login: ponto de entrada do sistema -->
+<ion-content class="ion-padding custom-bg">
+  <div class="login-container">
+    <div class="login-box premium-card">
+
+      <!-- Cabeçalho com ícone e título -->
+      <div class="login-header">
+        <div class="login-icon">
+          <ion-icon name="construct-outline"></ion-icon>
+        </div>
+        <h2>Sistema de Chamados</h2>
+        <p>Informe suas credenciais para entrar</p>
+      </div>
+
+      <!-- Formulário de login com validação por template -->
+      <form #formLogin="ngForm" (ngSubmit)="fazerLogin()">
+
+        <!-- Campo Usuário -->
+        <div class="field-group">
+          <ion-item class="custom-input" lines="none"
+                    [class.invalid]="campoUsuario.invalid && campoUsuario.touched">
+            <ion-icon name="person-outline" slot="start" color="medium"></ion-icon>
+            <ion-input
+              label="Usuário"
+              labelPlacement="floating"
+              type="text"
+              [(ngModel)]="usuario"
+              name="usuario"
+              #campoUsuario="ngModel"
+              required
+              placeholder="Digite seu usuário"
+            ></ion-input>
+          </ion-item>
+          <!-- Mensagem de erro do campo usuário -->
+          <p class="error-msg" *ngIf="campoUsuario.invalid && campoUsuario.touched">
+            <ion-icon name="alert-circle-outline"></ion-icon> Usuário é obrigatório.
+          </p>
+        </div>
+
+        <!-- Campo Senha -->
+        <div class="field-group">
+          <ion-item class="custom-input" lines="none"
+                    [class.invalid]="campoSenha.invalid && campoSenha.touched">
+            <ion-icon name="lock-closed-outline" slot="start" color="medium"></ion-icon>
+            <ion-input
+              label="Senha"
+              labelPlacement="floating"
+              type="password"
+              [(ngModel)]="senha"
+              name="senha"
+              #campoSenha="ngModel"
+              required
+              placeholder="Digite sua senha"
+            ></ion-input>
+          </ion-item>
+          <!-- Mensagem de erro do campo senha -->
+          <p class="error-msg" *ngIf="campoSenha.invalid && campoSenha.touched">
+            <ion-icon name="alert-circle-outline"></ion-icon> Senha é obrigatória.
+          </p>
+        </div>
+
+        <!-- Botão de login -->
+        <ion-button expand="block" class="login-button" type="submit" color="primary">
+          Entrar no Sistema
+          <ion-icon name="log-in-outline" slot="end"></ion-icon>
+        </ion-button>
+
+      </form>
+    </div>
+  </div>
+</ion-content>

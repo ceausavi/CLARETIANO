@@ -1,0 +1,106 @@
+<!-- Tela de Cadastro de Técnico: registra novo membro da equipe de suporte -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="tertiary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tecnicos" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Novo Técnico</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+  <form #formTecnico="ngForm" (ngSubmit)="salvar()" class="form-container">
+    <div class="premium-card form-card">
+
+      <!-- ===== CAMPO: Nome ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoNome.invalid && campoNome.touched">
+          <ion-icon name="person-outline" slot="start" color="medium"></ion-icon>
+          <ion-input
+            label="Nome Completo *"
+            labelPlacement="floating"
+            type="text"
+            [(ngModel)]="tecnico.nome"
+            name="nome"
+            #campoNome="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoNome.invalid && campoNome.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Nome é obrigatório.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Especialidade ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoEspecialidade.invalid && campoEspecialidade.touched">
+          <ion-icon name="build-outline" slot="start" color="medium"></ion-icon>
+          <ion-select
+            label="Especialidade *"
+            labelPlacement="floating"
+            [(ngModel)]="tecnico.especialidade"
+            name="especialidade"
+            #campoEspecialidade="ngModel"
+            required
+          >
+            <ion-select-option value="Hardware">🖥️ Hardware</ion-select-option>
+            <ion-select-option value="Software">💻 Software</ion-select-option>
+            <ion-select-option value="Rede">🌐 Rede</ion-select-option>
+            <ion-select-option value="Impressora">🖨️ Impressora</ion-select-option>
+            <ion-select-option value="Sistema interno">⚙️ Sistema interno</ion-select-option>
+            <ion-select-option value="Outros">📦 Outros</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoEspecialidade.invalid && campoEspecialidade.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Selecione a especialidade.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Contato ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoContato.invalid && campoContato.touched">
+          <ion-icon name="mail-outline" slot="start" color="medium"></ion-icon>
+          <ion-input
+            label="Contato (E-mail ou Telefone) *"
+            labelPlacement="floating"
+            type="text"
+            [(ngModel)]="tecnico.contato"
+            name="contato"
+            #campoContato="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoContato.invalid && campoContato.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Contato é obrigatório.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Situação ===== -->
+      <div class="field-group">
+        <ion-item lines="none" class="custom-input">
+          <ion-icon name="power-outline" slot="start" color="medium"></ion-icon>
+          <ion-select
+            label="Situação"
+            labelPlacement="floating"
+            [(ngModel)]="tecnico.situacao"
+            name="situacao"
+          >
+            <ion-select-option value="Ativo">✅ Ativo</ion-select-option>
+            <ion-select-option value="Inativo">❌ Inativo</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </div>
+
+    </div>
+
+    <!-- Botão de salvar -->
+    <ion-button expand="block" type="submit" class="save-button" color="tertiary">
+      Salvar Técnico
+      <ion-icon name="save-outline" slot="end"></ion-icon>
+    </ion-button>
+
+  </form>
+</ion-content>

@@ -1,0 +1,89 @@
+<!-- Tela de Atualização de Status: altera o status e registra observação do atendimento -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="chamado ? '/chamados/detalhes/' + chamado.id : '/chamados'" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Atualizar Status</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+
+  <!-- Chamado encontrado: exibe formulário de atualização -->
+  <div *ngIf="chamado">
+
+    <!-- Resumo do chamado para contexto -->
+    <div class="resumo-chamado premium-card">
+      <p class="id-text">Chamado #{{ chamado.id }}</p>
+      <h2>{{ chamado.titulo }}</h2>
+      <div class="status-info">
+        <span>Status atual:</span>
+        <strong>{{ chamado.status }}</strong>
+      </div>
+    </div>
+
+    <!-- Formulário de atualização -->
+    <form #formAtualizar="ngForm" (ngSubmit)="salvar()" class="form-container">
+      <div class="premium-card form-card">
+
+        <!-- ===== CAMPO: Novo Status ===== -->
+        <div class="field-group">
+          <ion-item lines="full" class="custom-input"
+                    [class.invalid]="campoStatus.invalid && campoStatus.touched">
+            <ion-icon name="sync-outline" slot="start" color="medium"></ion-icon>
+            <ion-select
+              label="Novo Status *"
+              labelPlacement="floating"
+              [(ngModel)]="novoStatus"
+              name="status"
+              #campoStatus="ngModel"
+              required
+            >
+              <ion-select-option value="Aberto">📋 Aberto</ion-select-option>
+              <ion-select-option value="Em atendimento">🔧 Em atendimento</ion-select-option>
+              <ion-select-option value="Concluído">✅ Concluído</ion-select-option>
+              <ion-select-option value="Cancelado">❌ Cancelado</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <p class="error-msg" *ngIf="campoStatus.invalid && campoStatus.touched">
+            <ion-icon name="alert-circle-outline"></ion-icon> Selecione o novo status.
+          </p>
+        </div>
+
+        <!-- ===== CAMPO: Observações do atendimento ===== -->
+        <div class="field-group">
+          <ion-item lines="none" class="custom-input">
+            <ion-icon name="chatbox-ellipses-outline" slot="start" color="medium"></ion-icon>
+            <ion-textarea
+              label="Observações do Atendimento"
+              labelPlacement="floating"
+              [(ngModel)]="observacao"
+              name="observacao"
+              rows="5"
+              placeholder="Descreva o que foi feito, soluções aplicadas..."
+            ></ion-textarea>
+          </ion-item>
+        </div>
+
+      </div>
+
+      <!-- Botão de salvar -->
+      <ion-button expand="block" type="submit" class="save-button" color="secondary">
+        <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+        Salvar Alterações
+      </ion-button>
+    </form>
+  </div>
+
+  <!-- Chamado não encontrado -->
+  <div *ngIf="!chamado" class="error-state">
+    <ion-icon name="warning-outline" color="danger"></ion-icon>
+    <h3>Chamado não encontrado</h3>
+    <ion-button routerLink="/chamados" fill="clear" color="primary">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Voltar à lista
+    </ion-button>
+  </div>
+
+</ion-content>

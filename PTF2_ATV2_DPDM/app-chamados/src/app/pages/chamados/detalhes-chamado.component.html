@@ -1,0 +1,113 @@
+<!-- Tela de Detalhes do Chamado: exibe todas as informações do chamado selecionado -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/chamados" text="Chamados"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalhes do Chamado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+
+  <!-- Chamado encontrado: exibe todas as informações -->
+  <div *ngIf="chamado" class="detalhes-container">
+
+    <!-- Card de cabeçalho: ID, título, data e status -->
+    <div class="header-card premium-card">
+      <div class="status-row">
+        <span class="id-tag">#{{ chamado.id }}</span>
+        <ion-badge [color]="getCorStatus(chamado.status)" class="badge-status">
+          {{ chamado.status }}
+        </ion-badge>
+      </div>
+      <h1 class="titulo-chamado">{{ chamado.titulo }}</h1>
+      <p class="data-abertura">
+        <ion-icon name="calendar-outline"></ion-icon>
+        Aberto em {{ chamado.dataAbertura | date:'dd/MM/yyyy' }} às {{ chamado.dataAbertura | date:'HH:mm' }}
+      </p>
+    </div>
+
+    <!-- Card de informações gerais -->
+    <div class="premium-card info-card">
+      <h3 class="section-title">Informações Gerais</h3>
+
+      <!-- Solicitante e setor -->
+      <div class="info-item">
+        <ion-icon name="person-outline"></ion-icon>
+        <div class="text-content">
+          <label>Solicitante</label>
+          <span>{{ chamado.solicitante }}</span>
+        </div>
+      </div>
+
+      <!-- Setor -->
+      <div class="info-item" *ngIf="chamado.setor">
+        <ion-icon name="business-outline"></ion-icon>
+        <div class="text-content">
+          <label>Setor</label>
+          <span>{{ chamado.setor }}</span>
+        </div>
+      </div>
+
+      <!-- Prioridade -->
+      <div class="info-item">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <div class="text-content">
+          <label>Prioridade</label>
+          <ion-badge [color]="getCorPrioridade(chamado.prioridade)">
+            {{ chamado.prioridade }}
+          </ion-badge>
+        </div>
+      </div>
+
+      <!-- Técnico responsável -->
+      <div class="info-item">
+        <ion-icon name="build-outline"></ion-icon>
+        <div class="text-content">
+          <label>Técnico Responsável</label>
+          <span>{{ chamado.tecnico || 'Não atribuído' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card de descrição do problema -->
+    <div class="premium-card desc-card">
+      <h3 class="section-title">Descrição do Problema</h3>
+      <p class="descricao-texto">{{ chamado.descricao }}</p>
+    </div>
+
+    <!-- Card de observações (somente se houver) -->
+    <div class="premium-card obs-card" *ngIf="chamado.observacao">
+      <h3 class="section-title">
+        <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+        Observações do Atendimento
+      </h3>
+      <p class="descricao-texto">{{ chamado.observacao }}</p>
+    </div>
+
+    <!-- Botão para atualizar o status do chamado -->
+    <ion-button
+      expand="block"
+      class="action-button"
+      color="secondary"
+      (click)="atualizarStatus()"
+    >
+      <ion-icon name="create-outline" slot="start"></ion-icon>
+      Atualizar Status
+    </ion-button>
+
+  </div>
+
+  <!-- Chamado não encontrado -->
+  <div *ngIf="!chamado" class="error-state">
+    <ion-icon name="warning-outline" color="danger"></ion-icon>
+    <h3>Chamado não encontrado</h3>
+    <p>O chamado solicitado não existe ou foi removido.</p>
+    <ion-button routerLink="/chamados" fill="clear" color="primary">
+      <ion-icon name="arrow-back-outline" slot="start"></ion-icon>
+      Voltar à lista
+    </ion-button>
+  </div>
+
+</ion-content>

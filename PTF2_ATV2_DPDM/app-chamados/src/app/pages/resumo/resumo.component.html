@@ -1,0 +1,126 @@
+<!-- Tela de Resumo dos Chamados: apresenta totais por status e por prioridade -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/menu" text="Menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Resumo Geral</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+
+  <!-- Destaque: total de chamados registrados -->
+  <div class="resumo-header premium-card">
+    <div class="total-box">
+      <span class="total-numero">{{ resumo.total }}</span>
+      <span class="total-label">Chamados Registrados</span>
+    </div>
+    <ion-icon name="pie-chart-outline" class="header-icon"></ion-icon>
+  </div>
+
+  <!-- ===== SEÇÃO: Totais por Status ===== -->
+  <h3 class="section-title">
+    <ion-icon name="flag-outline"></ion-icon>
+    Por Status
+  </h3>
+  <div class="metrics-grid">
+
+    <div class="metric-card">
+      <div class="icon-box bg-primary">
+        <ion-icon name="folder-open-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.abertos }}</h4>
+        <p>Abertos</p>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="icon-box bg-warning">
+        <ion-icon name="hammer-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.emAtendimento }}</h4>
+        <p>Em atendimento</p>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="icon-box bg-success">
+        <ion-icon name="checkmark-done-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.concluidos }}</h4>
+        <p>Concluídos</p>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="icon-box bg-danger">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.cancelados }}</h4>
+        <p>Cancelados</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== SEÇÃO: Totais por Prioridade ===== -->
+  <h3 class="section-title section-title--mt">
+    <ion-icon name="alert-circle-outline"></ion-icon>
+    Por Prioridade
+  </h3>
+  <div class="metrics-grid">
+
+    <div class="metric-card">
+      <div class="icon-box bg-medium">
+        <ion-icon name="arrow-down-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.baixa }}</h4>
+        <p>Baixa</p>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="icon-box bg-secondary">
+        <ion-icon name="remove-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.media }}</h4>
+        <p>Média</p>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="icon-box bg-warning">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.alta }}</h4>
+        <p>Alta</p>
+      </div>
+    </div>
+
+    <div class="metric-card">
+      <div class="icon-box bg-danger">
+        <ion-icon name="alert-outline"></ion-icon>
+      </div>
+      <div class="metric-info">
+        <h4>{{ resumo.urgente }}</h4>
+        <p>Urgente</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Rodapé informativo -->
+  <p class="resumo-footer">
+    <ion-icon name="information-circle-outline"></ion-icon>
+    Os dados são atualizados em tempo real conforme os chamados são cadastrados e atualizados.
+  </p>
+
+</ion-content>

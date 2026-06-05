@@ -1,0 +1,92 @@
+<!-- Tela do Menu Principal: hub de navegação pós-login -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-title>Menu Principal</ion-title>
+    <ion-buttons slot="end">
+      <!-- Botão de sair encerra a sessão e retorna ao login -->
+      <ion-button (click)="sair()" title="Sair do sistema">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+
+  <!-- Saudação ao usuário -->
+  <div class="welcome-header">
+    <div class="welcome-icon">
+      <ion-icon name="construct-outline"></ion-icon>
+    </div>
+    <div class="welcome-text">
+      <h2>Bem-vindo(a)!</h2>
+      <p>Sistema de Controle de Chamados Técnicos</p>
+    </div>
+  </div>
+
+  <!-- Grade de navegação 2x3 -->
+  <div class="dashboard-grid">
+
+    <!-- 1. Novo Chamado -->
+    <div class="grid-item premium-card" (click)="navegar('/chamados/novo')" id="btn-novo-chamado">
+      <div class="icon-wrapper bg-primary">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </div>
+      <h3>Novo Chamado</h3>
+      <p>Registrar ocorrência</p>
+    </div>
+
+    <!-- 2. Lista de Chamados -->
+    <div class="grid-item premium-card" (click)="navegar('/chamados')" id="btn-ver-chamados">
+      <div class="icon-wrapper bg-secondary">
+        <ion-icon name="list-outline"></ion-icon>
+      </div>
+      <h3>Ver Chamados</h3>
+      <p>Acompanhar status</p>
+    </div>
+
+    <!-- 3. Novo Técnico -->
+    <div class="grid-item premium-card" (click)="navegar('/tecnicos/novo')" id="btn-novo-tecnico">
+      <div class="icon-wrapper bg-tertiary">
+        <ion-icon name="person-add-outline"></ion-icon>
+      </div>
+      <h3>Novo Técnico</h3>
+      <p>Cadastrar na equipe</p>
+    </div>
+
+    <!-- 4. Lista de Técnicos -->
+    <div class="grid-item premium-card" (click)="navegar('/tecnicos')" id="btn-ver-tecnicos">
+      <div class="icon-wrapper bg-success">
+        <ion-icon name="people-outline"></ion-icon>
+      </div>
+      <h3>Ver Técnicos</h3>
+      <p>Gerenciar equipe</p>
+    </div>
+
+    <!-- 5. Resumo dos Chamados -->
+    <div class="grid-item premium-card" (click)="navegar('/resumo')" id="btn-resumo">
+      <div class="icon-wrapper bg-warning">
+        <ion-icon name="pie-chart-outline"></ion-icon>
+      </div>
+      <h3>Resumo</h3>
+      <p>Totais e métricas</p>
+    </div>
+
+    <!-- 6. Sobre o Aplicativo -->
+    <div class="grid-item premium-card" (click)="navegar('/sobre')" id="btn-sobre">
+      <div class="icon-wrapper bg-dark">
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </div>
+      <h3>Sobre</h3>
+      <p>Info do projeto</p>
+    </div>
+
+  </div>
+
+  <!-- Rodapé com instrução de saída -->
+  <div class="footer-hint">
+    <ion-icon name="log-out-outline"></ion-icon>
+    <span>Toque no ícone de saída para encerrar a sessão</span>
+  </div>
+
+</ion-content>

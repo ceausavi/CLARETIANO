@@ -1,0 +1,159 @@
+<!-- Tela de Cadastro de Chamado: registra nova ocorrência técnica -->
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/chamados" text="Voltar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Novo Chamado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-bg">
+  <form #formChamado="ngForm" (ngSubmit)="salvar()" class="form-container">
+    <div class="premium-card form-card">
+
+      <!-- ===== CAMPO: Solicitante ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoSolicitante.invalid && campoSolicitante.touched">
+          <ion-icon name="person-outline" slot="start" color="medium"></ion-icon>
+          <ion-input
+            label="Solicitante *"
+            labelPlacement="floating"
+            type="text"
+            [(ngModel)]="chamado.solicitante"
+            name="solicitante"
+            #campoSolicitante="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoSolicitante.invalid && campoSolicitante.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Solicitante é obrigatório.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Setor ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input">
+          <ion-icon name="business-outline" slot="start" color="medium"></ion-icon>
+          <ion-input
+            label="Setor"
+            labelPlacement="floating"
+            type="text"
+            [(ngModel)]="chamado.setor"
+            name="setor"
+          ></ion-input>
+        </ion-item>
+      </div>
+
+      <!-- ===== CAMPO: Título ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoTitulo.invalid && campoTitulo.touched">
+          <ion-icon name="create-outline" slot="start" color="medium"></ion-icon>
+          <ion-input
+            label="Título do Chamado *"
+            labelPlacement="floating"
+            type="text"
+            [(ngModel)]="chamado.titulo"
+            name="titulo"
+            #campoTitulo="ngModel"
+            required
+          ></ion-input>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoTitulo.invalid && campoTitulo.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Título é obrigatório.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Descrição ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoDescricao.invalid && campoDescricao.touched">
+          <ion-icon name="document-text-outline" slot="start" color="medium"></ion-icon>
+          <ion-textarea
+            label="Descrição do Problema *"
+            labelPlacement="floating"
+            [(ngModel)]="chamado.descricao"
+            name="descricao"
+            #campoDescricao="ngModel"
+            rows="3"
+            required
+          ></ion-textarea>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoDescricao.invalid && campoDescricao.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Descrição é obrigatória.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Prioridade ===== -->
+      <div class="field-group">
+        <ion-item lines="full" class="custom-input"
+                  [class.invalid]="campoPrioridade.invalid && campoPrioridade.touched">
+          <ion-icon name="alert-circle-outline" slot="start" color="medium"></ion-icon>
+          <ion-select
+            label="Prioridade *"
+            labelPlacement="floating"
+            [(ngModel)]="chamado.prioridade"
+            name="prioridade"
+            #campoPrioridade="ngModel"
+            required
+          >
+            <ion-select-option value="Baixa">🟢 Baixa</ion-select-option>
+            <ion-select-option value="Média">🟡 Média</ion-select-option>
+            <ion-select-option value="Alta">🟠 Alta</ion-select-option>
+            <ion-select-option value="Urgente">🔴 Urgente</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <p class="error-msg" *ngIf="campoPrioridade.invalid && campoPrioridade.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon> Selecione a prioridade.
+        </p>
+      </div>
+
+      <!-- ===== CAMPO: Técnico Responsável ===== -->
+      <div class="field-group">
+        <!-- Aviso quando não há técnicos ativos cadastrados -->
+        <div class="no-tecnico-msg" *ngIf="tecnicosDisponiveis.length === 0">
+          <ion-icon name="warning-outline" color="warning"></ion-icon>
+          <span>Nenhum técnico ativo disponível. <br>Cadastre um técnico primeiro.</span>
+        </div>
+
+        <ng-container *ngIf="tecnicosDisponiveis.length > 0">
+          <ion-item lines="none" class="custom-input"
+                    [class.invalid]="campoTecnico.invalid && campoTecnico.touched">
+            <ion-icon name="build-outline" slot="start" color="medium"></ion-icon>
+            <ion-select
+              label="Técnico Responsável *"
+              labelPlacement="floating"
+              [(ngModel)]="chamado.tecnico"
+              name="tecnico"
+              #campoTecnico="ngModel"
+              required
+            >
+              <ion-select-option *ngFor="let tecnico of tecnicosDisponiveis" [value]="tecnico.nome">
+                {{ tecnico.nome }} — {{ tecnico.especialidade }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <p class="error-msg" *ngIf="campoTecnico.invalid && campoTecnico.touched">
+            <ion-icon name="alert-circle-outline"></ion-icon> Selecione o técnico responsável.
+          </p>
+        </ng-container>
+      </div>
+
+    </div>
+
+    <!-- Botão de salvar -->
+    <ion-button
+      expand="block"
+      type="submit"
+      class="save-button"
+      color="primary"
+      [disabled]="tecnicosDisponiveis.length === 0"
+    >
+      Registrar Chamado
+      <ion-icon name="checkmark-circle-outline" slot="end"></ion-icon>
+    </ion-button>
+
+  </form>
+</ion-content>
