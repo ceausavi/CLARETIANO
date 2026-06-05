@@ -1,0 +1,12 @@
+C:\Users\usuario\Desktop\repository\bin\Debug\banco_repository1.exe.config
+C:\Users\usuario\Desktop\repository\bin\Debug\banco_repository1.exe
+C:\Users\usuario\Desktop\repository\bin\Debug\banco_repository1.pdb
+C:\Users\usuario\Desktop\repository\bin\Debug\MySql.Data.dll
+C:\Users\usuario\Desktop\repository\bin\Debug\MySql.Data.xml
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_repository1.csproj.AssemblyReference.cache
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_repository1.Form1.resources
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_repository1.csproj.GenerateResource.cache
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_repository1.csproj.CoreCompileInputs.cache
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_re.288DEF64.Up2Date
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_repository1.exe
+C:\Users\usuario\Desktop\repository\obj\Debug\banco_repository1.pdb
