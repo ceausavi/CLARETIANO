@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>PÁGINA DE CADASTROS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Tipo</ion-label>
+  <ion-select [(ngModel)]="usuario.tipo" placeholder="Selecione">
+  <ion-select-option value="Cliente">Cliente</ion-select-option>
+  <ion-select-option value="Fornecedor">Fornecedor</ion-select-option>
+</ion-select>
+  </ion-item>
+
+  <ion-card *ngIf="tipo">
+    <ion-card-content>
+      Você selecionou: <strong>{{ tipo }}</strong>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-item>
+    <ion-label position="stacked">Nome</ion-label>
+    <ion-input
+      [(ngModel)]="usuario.nome"
+      placeholder="Digite o seu nome">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Endereço</ion-label>
+    <ion-input
+      [(ngModel)]="usuario.endereco"
+      placeholder="Informe seu endereço">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="cadastrarUsuario()">
+    Cadastrar Usuário
+  </ion-button>
+
+  <ion-button expand="block" color="danger" (click)="limparFormulario()">
+    Limpar Cadastros
+  </ion-button>
+
+   <ion-button expand="block" routerLink="/menu" color="warning">
+        Voltar ao Menu
+      </ion-button>
+
+
+<ion-list>
+  <ion-item *ngFor="let item of listaCadastros; let i = index">
+    <ion-label>
+      <h2>{{item.nome}}</h2>
+      <p>{{item.tipo}} - {{item.endereco}}</p>
+    </ion-label>
+
+    <ion-button color="danger" (click)="excluir(i)">
+      EXCLUIR
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+
+
+
+
+
+</ion-content>

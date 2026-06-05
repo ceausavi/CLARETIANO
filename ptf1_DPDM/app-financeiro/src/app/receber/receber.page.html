@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>PÁGINA DE RECEBIMENTOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label>Cliente: </ion-label>
+    <ion-input [(ngModel)]="recebimento.cliente" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+  <ion-label>Vencimento: </ion-label>
+  <ion-input
+    [(ngModel)]="recebimento.vencimento"
+    type="date">
+  </ion-input>
+</ion-item>
+
+  <ion-item>
+    <ion-label>Pagamento: </ion-label>
+    <ion-select [(ngModel)]="recebimento.pagamento" placeholder="Selecione">
+      <ion-select-option value="pix">Pix</ion-select-option>
+      <ion-select-option value="dinheiro">Dinheiro</ion-select-option>
+      <ion-select-option value="cartao_credito">Cartão de Crédito</ion-select-option>
+      <ion-select-option value="cartao_debito">Cartão de Débito</ion-select-option>
+      <ion-select-option value="boleto">Boleto</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Valor (R$):
+      </ion-label>
+    <ion-input
+      [(ngModel)]="recebimento.valor"
+      type="number">
+      </ion-input>
+
+  </ion-item>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="salvar()">
+    Salvar
+  </ion-button>
+
+  <ion-button expand="block" color="danger" (click)="limpar()">
+  Limpar Recebimentos
+</ion-button>
+
+<ion-button expand="block" routerLink="/menu" color="warning">
+        Voltar ao Menu
+      </ion-button>
+
+<ion-list>
+  <ion-item *ngFor="let item of listaRecebimentos; let i = index">
+    <ion-label>
+      <h2>{{ item.cliente }}</h2>
+      <p>{{ item.pagamento }} - {{ item.vencimento }} - R$ {{ item.valor }}</p>
+    </ion-label>
+
+    <ion-button color="danger" (click)="excluir(i)">
+      EXCLUIR
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+</ion-content>

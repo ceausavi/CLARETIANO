@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>PÁGINA DE PAGAMENTOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-item>
+    <ion-label>Fornecedor: </ion-label>
+    <ion-input
+      [(ngModel)]="pagamento.fornecedor">
+    </ion-input>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label >Vencimento: </ion-label>
+    <ion-input
+      [(ngModel)]="pagamento.vencimento"
+      type="date">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Pagamento: </ion-label>
+    <ion-select [(ngModel)]="pagamento.formaPagamento" placeholder="Selecione">
+      <ion-select-option value="Pix">Pix</ion-select-option>
+      <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+      <ion-select-option value="Cartão de Crédito">Cartão de Crédito</ion-select-option>
+      <ion-select-option value="Cartão de Débito">Cartão de Débito</ion-select-option>
+      <ion-select-option value="Boleto">Boleto</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label >Valor (R$):
+    </ion-label>
+    <ion-input
+      [(ngModel)]="pagamento.valor"
+      type="number">
+    </ion-input>
+  </ion-item>
+
+  <ion-button expand="block" (click)="salvar()">
+    Salvar
+  </ion-button>
+
+  <ion-button expand="block" color="danger" (click)="limpar()">
+    Limpar Pagamentos
+  </ion-button>
+
+  <ion-button expand="block" routerLink="/menu" color="warning">
+    Voltar ao Menu
+  </ion-button>
+
+  <ion-list>
+    <ion-item *ngFor="let item of listaPagamentos; let i = index">
+      <ion-label>
+        <h2>{{ item.fornecedor }}</h2>
+        <p>{{ item.formaPagamento }} - {{ item.vencimento }} - R$ {{ item.valor }}</p>
+      </ion-label>
+
+      <ion-button color="danger" (click)="excluir(i)">
+        EXCLUIR
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

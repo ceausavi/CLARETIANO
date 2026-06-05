@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>PÁGINA DOS MENUS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+   <div class="escolha">
+  <h1>Escolha uma <span>Opção</span></h1>
+</div>
+
+    <div>
+      <ion-button expand="block" color="secondary" (click)="cadUsuario()" > Cadastro de Usuários </ion-button>
+    </div>
+    <br>
+
+     <div>
+      <ion-button expand="block" color="secondary" (click)="ctsReceber()" > Contas a Receber </ion-button>
+    </div>
+    <br>
+
+     <div>
+      <ion-button expand="block" color="secondary" (click)="ctsPagar()" >Contas a Pagar </ion-button>
+    </div>
+    <br>
+
+    <ion-button expand="block" routerLink="/login" color="warning">
+        Voltar ao Login
+      </ion-button>
+      <br>
+    
+  
+</ion-content>

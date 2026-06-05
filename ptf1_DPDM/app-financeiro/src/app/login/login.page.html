@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>PÁGINA DE LOGIN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="login-container">
+    <ion-card>
+
+      <div class="login-header">
+  <div class="login-icon">🔐</div>
+  <h1>Seja <span>muito</span> bem vindo!</h1>
+  <br>
+  <p>Faça login para continuar</p>
+</div>
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-input 
+              label="Usuário :"
+              placeholder="Informe seu usuario">
+            </ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-input 
+              type="password"
+              label="Senha :"
+              placeholder="Informe sua senha">
+            </ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-button expand="block" color="secondary" (click)="avancar()">
+          CONFIRMAR
+        </ion-button>
+
+      </ion-card-content>
+
+    </ion-card>
+  </div>
+
+</ion-content>

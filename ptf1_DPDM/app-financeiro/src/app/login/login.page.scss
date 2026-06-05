@@ -1,0 +1,27 @@
+.login-header {
+  text-align: center;
+  padding: 28px 16px 16px;
+
+  .login-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #1a2d4a;
+    margin: 0 0 6px;
+
+    span {
+      color: var(--ion-color-primary);
+    }
+  }
+
+  p {
+    font-size: 14px;
+    color: #8a9bb0;
+    margin: 0;
+  }
+}
+ 

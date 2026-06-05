@@ -1,0 +1,16 @@
+.escolha {
+  text-align: center;
+  padding: 32px 16px 16px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a2d4a;
+    margin: 0;
+
+    span {
+      color: var(--ion-color-primary);
+      border-bottom: 3px solid var(--ion-color-primary);
+    }
+  }
+}
